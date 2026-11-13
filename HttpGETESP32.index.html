@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Interés Simple</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f7;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .contenedor {
+            background: white;
+            max-width: 400px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        input, button {
+            width: 90%;
+            padding: 12px;
+            margin: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #1769aa;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #resultado {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+    <h1>Interés Simple</h1>
+    <p>Ingresa los datos para calcular el interés.</p>
+
+    <input type="number" id="capital" placeholder="Capital inicial">
+    <input type="number" id="tasa" placeholder="Tasa de interés (%)">
+    <input type="number" id="tiempo" placeholder="Tiempo en años">
+
+    <button onclick="calcularInteres()">Calcular</button>
+
+    <p id="resultado"></p>
+</div>
+
+<script>
+    function calcularInteres() {
+        let capital = Number(document.getElementById("capital").value);
+        let tasa = Number(document.getElementById("tasa").value);
+        let tiempo = Number(document.getElementById("tiempo").value);
+
+        if (capital <= 0 || tasa < 0 || tiempo <= 0) {
+            document.getElementById("resultado").innerText =
+                "Ingresa valores válidos.";
+            return;
+        }
+
+        let interes = (capital * tasa * tiempo) / 100;
+        let total = capital + interes;
+
+        document.getElementById("resultado").innerText =
+            "Interés generado: $" + interes.toLocaleString("es-CO") +
+            " | Total: $" + total.toLocaleString("es-CO");
+    }
+</script>
+
+</body>
+</html>
